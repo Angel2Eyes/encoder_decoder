@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_is_column
+DEFAULT_FILE atom dec_is_column.v

@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom enc_parity_32bit
+DEFAULT_FILE atom enc_parity_32bit.v

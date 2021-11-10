@@ -1,0 +1,15 @@
+[QuestaSim]
+encoder_decoder_lib = $HDS_PROJECT_DIR/encoder_decoder_lib/work
+[SvAssistant]
+encoder_decoder_lib = $HDS_PROJECT_DIR/encoder_decoder_lib/svassistant
+[hdl]
+encoder_decoder_lib = $HDS_PROJECT_DIR\encoder_decoder_lib\hdl
+[hds]
+encoder_decoder_lib = $HDS_PROJECT_DIR\encoder_decoder_lib\hds
+[hds_settings]
+default_library = encoder_decoder_lib
+version = 2
+[library_type]
+encoder_decoder_lib = regular
+[shared]
+others = $HDS_TEAM_HOME/shared.hdp

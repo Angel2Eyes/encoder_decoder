@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_output_ctrl
+DEFAULT_FILE atom dec_output_ctrl.v

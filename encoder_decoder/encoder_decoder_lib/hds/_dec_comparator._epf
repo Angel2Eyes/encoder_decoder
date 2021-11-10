@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_comparator
+DEFAULT_FILE atom dec_comparator.v

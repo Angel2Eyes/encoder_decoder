@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom enc_parity_8bit
+DEFAULT_FILE atom enc_parity_8bit.v

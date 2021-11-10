@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom enc_parity_16bit
+DEFAULT_FILE atom enc_parity_16bit.v
