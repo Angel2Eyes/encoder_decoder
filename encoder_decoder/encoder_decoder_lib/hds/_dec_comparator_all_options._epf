@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_comparator_all_options
+DEFAULT_FILE atom dec_comparator_all_options.sv
