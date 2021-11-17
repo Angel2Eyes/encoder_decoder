@@ -1,7 +1,7 @@
 //
 // Verilog Module encoder_decoder_lib.dec_comparator
 //
-// Created:
+// Created: 
 //          by - yuvalsaa.UNKNOWN (L330W530)
 //          at - 17:40:42 11/10/2021
 //
@@ -17,14 +17,14 @@ parameter DATA_DEPTH = 8
 (
 input [DATA_DEPTH-1:0] A,
 input [DATA_DEPTH-1:0] B,
-output isEqual
+output reg isEqual
 ) ;
 
-always @ (A or B) //Check the state of the input lines 
+always @* 
 
 begin 
 
- isEqual <= ( A == B)? 1'b1 : 1'b0; 
+ isEqual <= ( A === B)? 1'b1 : 1'b0; 
 
 end 
 

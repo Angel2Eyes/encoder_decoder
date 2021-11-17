@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_mat_multiplier_8bit
+DEFAULT_FILE atom dec_mat_multiplier_8bit.v

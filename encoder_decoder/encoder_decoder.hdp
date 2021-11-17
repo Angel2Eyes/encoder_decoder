@@ -1,3 +1,5 @@
+[DesignChecker]
+encoder_decoder_lib = $HDS_PROJECT_DIR\encoder_decoder_lib\designcheck
 [QuestaSim]
 encoder_decoder_lib = $HDS_PROJECT_DIR/encoder_decoder_lib/work
 [SvAssistant]
