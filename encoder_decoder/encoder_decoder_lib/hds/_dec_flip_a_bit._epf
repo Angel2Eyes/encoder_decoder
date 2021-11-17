@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_flip_a_bit
+DEFAULT_FILE atom dec_flip_a_bit.sv
