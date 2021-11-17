@@ -14,11 +14,12 @@ module dec_is_column
 (
 input [5:0] s,
 input [1:0] codeword_width,
-output reg isCol
+output reg isCol,
+output reg [4:0] whatCol
 );
 
-wire [31:0] comp_input [5:0];
-wire isEqual [31:0];
+logic [5:0] comp_input [31:0];
+logic [31:0] isEqual;
 
 // instantiate comparators			
 genvar i;
@@ -32,7 +33,13 @@ generate
         .isEqual(isEqual[i])
     );
 end 
-endgenerate			
+endgenerate	
+
+dec_priority_encoder encoder
+(
+	.Y (isEqual),
+	.A (whatCol)
+);		
 
 // 	initialize inputs and define output		
 always @*
@@ -76,7 +83,7 @@ begin
 		comp_input[0] <= 6'b100001;
 		
 		// calculate if any column matches
-		isCol <= | isEqual
+		isCol <= | isEqual;
 		
 	// we work with 16 bit
 	end else if(codeword_width[0]) begin
@@ -114,7 +121,7 @@ begin
 		comp_input[0] <= 6'b010001;
 		
 		// calculate if any column matches
-		isCol <= | (isEqual[15:0])
+		isCol <= | (isEqual[15:0]);
 		
 	// we work with 8 bit
 	end else begin
@@ -152,7 +159,7 @@ begin
 		comp_input[0] <= 6'b001001;
 		
 		// calculate if any column matches
-		isCol <= | (isEqual[7:0])
+		isCol <= | (isEqual[7:0]);
 	end
 
 end

@@ -12,8 +12,8 @@
 `timescale 1ns/10ps
 module dec_comparator_all_options
 (
-input [31:0] A,
-input [31:0] B,
+input [5:0] A,
+input [5:0] B,
 input [1:0] codeword_width,
 output reg isEqual
 ) ;
@@ -21,7 +21,7 @@ output reg isEqual
 logic result_8bit, result_16bit, result_32bit;
 
 dec_comparator #(
-.DATA_DEPTH (32)
+.DATA_DEPTH (6)
 ) inst_32bit
 (
 .A          (A),
@@ -30,20 +30,20 @@ dec_comparator #(
 );
 
 dec_comparator #(
-.DATA_DEPTH (16)
+.DATA_DEPTH (5)
 ) inst_16bit
 (
-.A          (A[15:0]),
-.B        (B[15:0]),
+.A          (A[4:0]),
+.B        (B[4:0]),
 .isEqual	(result_16bit)
 );
 
 dec_comparator #(
-.DATA_DEPTH (8)
+.DATA_DEPTH (4)
 ) inst_8bit
 (
-.A          (A[7:0]),
-.B        (B[7:0]),
+.A          (A[3:0]),
+.B        (B[3:0]),
 .isEqual	(result_8bit)
 );
 

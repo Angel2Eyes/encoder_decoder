@@ -1,0 +1,2 @@
+DEFAULT_ARCHITECTURE atom dec_priority_encoder
+DEFAULT_FILE atom dec_priority_encoder.sv
