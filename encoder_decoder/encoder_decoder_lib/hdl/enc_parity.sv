@@ -1,4 +1,4 @@
-module enc_parity # ( AMBA_WORD = 32)(CODEWORD_WIDTH, data_in, parity);
+module enc_parity # ( AMBA_WORD = 32)(CODEWORD_WIDTH, data_in, parity);			//TODO: CHECK - probably unnecessary file
 
 	parameter MAX_PARITY_WIDTH = 6;
 	
