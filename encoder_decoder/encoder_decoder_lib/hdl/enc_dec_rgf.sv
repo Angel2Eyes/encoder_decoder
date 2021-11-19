@@ -96,7 +96,7 @@ module enc_dec_rgf
 				2'b11	:	read_reg = noise;
 			endcase
 		end
-		else
+		else if(~rstn)
 			read_reg = {DATA_WIDTH{1'b0}};
 	end
 
