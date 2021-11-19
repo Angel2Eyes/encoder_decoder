@@ -33,23 +33,24 @@ module enc_dec_ctrl
 	output	logic [AMBA_WORD-1:0]			prdata,
 	//output	logic [DATA_WIDTH-1:0]			data_out,
 	
-	/////////////////////////////
-	
+	//Control signals
 	output	logic							enc_ena,
 	output	logic							dec_ena,
 	output	logic							dec_in_sel,
 	output	logic							data_out_sel,
-	output	logic							operation_done,	//TODO
-	output	logic							num_of_errors	//TODO
 	
+	//main output - check if needed here
+	output	logic							operation_done,	//TODO
+	output	logic							num_of_errors,	//TODO
+	
+	//reg data
+	output	logic [DATA_WIDTH-1:0]			data_in,
+	output	logic [DATA_WIDTH-1:0]			codeword_width,
+	output	logic [DATA_WIDTH-1:0]			noise
 	);
 	
 
 	logic [DATA_WIDTH-1:0]		ctrl_reg;
-	logic [DATA_WIDTH-1:0]		data_in;
-	logic [DATA_WIDTH-1:0]		codeword_width;
-	logic [DATA_WIDTH-1:0]		noise;
-	
 	logic [1:0]					ctrl;			
 	
 	enc_dec_rgf #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD), .DATA_WIDTH(DATA_WIDTH))

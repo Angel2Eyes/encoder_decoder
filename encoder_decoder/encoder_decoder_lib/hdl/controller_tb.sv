@@ -19,8 +19,9 @@ module controller_tb;
 	logic							data_out_sel;
 	logic							operation_done;	//TODO
 	logic							num_of_errors;	//TODO
-	
-
+	logic							data_in;
+	logic							codeword_width;
+    logic							noise;
     // duration for each bit = 20 * timescale = 20 * 1 ns  = 20ns
     localparam period = 40;  
 
@@ -38,7 +39,11 @@ module controller_tb;
 		.dec_in_sel(dec_in_sel),
 		.data_out_sel(data_out_sel),
 		.operation_done(operation_done),	
-		.num_of_errors(num_of_errors)
+		.num_of_errors(num_of_errors),
+		.data_in(data_in),
+		.codeword_width(codeword_width),
+		.noise(noise)
+		
 		);
     
 	always 
