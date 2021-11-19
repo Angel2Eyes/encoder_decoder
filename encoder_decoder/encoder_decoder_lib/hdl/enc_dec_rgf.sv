@@ -31,7 +31,6 @@ module enc_dec_rgf
 	input	logic							pwrite,
 	
 	output	logic [AMBA_WORD-1:0]			prdata,
-	output	logic [DATA_WIDTH-1:0]			data_out,
 	
 	/////////////////////////////
 	
@@ -49,7 +48,7 @@ module enc_dec_rgf
 	logic [DATA_WIDTH-1:0]	read_reg;
 	
 	
-	//enc_parity_32 P32 (.en(CODEWORD_WIDTH[1]),.data_in(data_in[25:11]), .parity_16(parity16), .parity_32(parity32));
+	//enc_parity_DATA_WIDTH PDATA_WIDTH (.en(CODEWORD_WIDTH[1]),.data_in(data_in[25:11]), .parity_16(parity16), .parity_DATA_WIDTH(parityDATA_WIDTH));
 	always_comb regs_wr_en = pwrite & penable & psel;
 	always_comb regs_rd_en = ~pwrite & psel & ~penable;
 	
@@ -62,28 +61,28 @@ module enc_dec_rgf
 
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			ctrl <= {32{1'b0}};
+			ctrl <= {DATA_WIDTH{1'b0}};
 		else if (regs_wr_en && reg_sel[0])
 			ctrl <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			data_in <= {32{1'b0}};
+			data_in <= {DATA_WIDTH{1'b0}};
 		else if (regs_wr_en && reg_sel[1])
 			data_in <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			codeword_width <= {32{1'b0}};
+			codeword_width <= {DATA_WIDTH{1'b0}};
 		else if (regs_wr_en && reg_sel[2])
 			codeword_width <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			noise <= {32{1'b0}};
+			noise <= {DATA_WIDTH{1'b0}};
 		else if (regs_wr_en && reg_sel[3])
 			noise <= pwdata;
 	end
@@ -98,7 +97,7 @@ module enc_dec_rgf
 			endcase
 		end
 		else
-			read_reg = {32{1'b0}};
+			read_reg = {DATA_WIDTH{1'b0}};
 	end
 
 	assign prdata = read_reg;
