@@ -16,6 +16,6 @@ module enc_parity_32 (en, data_in, parity_16, parity_32);
 			parity_32[0] <= data_in[14] ^ data_in[12] ^ data_in[10] ^ data_in[8] ^ data_in[6]  ^ data_in[4] ^ data_in[2] ^ data_in[0] ^ parity_16[0];
 		end
 		else
-			parity_32 <= 32'b0;
+			parity_32 <= 6'b000000;
 	end
 endmodule

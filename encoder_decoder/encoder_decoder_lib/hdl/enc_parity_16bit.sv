@@ -17,6 +17,6 @@ module enc_parity_16 (en, data_in, parity_8, parity_16);
 			parity_16[0] <= parity_8[0] ^ data_in[0] ^ data_in[2]  ^ data_in[4] ^ data_in[6];
 		end
 		else
-			parity_16 <= 16'b0;
+			parity_16 <= 5'b00000;
 	end
 endmodule
