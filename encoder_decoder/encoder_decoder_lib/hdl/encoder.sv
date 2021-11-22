@@ -11,13 +11,12 @@
 `resetall
 `timescale 1ns/10ps
 module encoder
-	#( 	parameter AMBA_WORD = 32,
-		parameter DATA_WIDTH = 32)
+	#( parameter DATA_WIDTH = 32)
 	(ena,codeword_width, data_in, data_out);
 
 	input						ena;
 	input [1:0] 				codeword_width;
-	input [AMBA_WORD - 1 : 0] 	data_in;
+	input [DATA_WIDTH - 1 : 0] 	data_in;
 	
 	output reg[DATA_WIDTH - 1 : 0] data_out;
 	
@@ -31,14 +30,15 @@ module encoder
 	enc_parity_16 P16 (.en(u_ena[0]), .data_in(data_in[10:4]), .parity_8(parity8), .parity_16(parity16));
 	enc_parity_8 P8 (.en(ena), .data_in(data_in[3:0]), .parity_8(parity8));
 	
-	always_comb u_ena = {2{ena}} & codeword_width;
+	always_comb u_ena[0] = ena & |codeword_width;
+	always_comb u_ena[1] = ena & codeword_width[1];
 	
 	always @ (*) begin
 		if(ena)
 			case(codeword_width)
 				2'b00 	:	data_out = {{(DATA_WIDTH-8){'b0}},data_in[3:0],parity8};
 				2'b01 	:	data_out = {{(DATA_WIDTH-16){'b0}},data_in[10:0],parity16};
-				2'b01 	: 	data_out = {data_in[DATA_WIDTH-7:0],parity32};
+				2'b10 	: 	data_out = {data_in[DATA_WIDTH-7:0],parity32};
 				default : 	data_out = {{(DATA_WIDTH-8){'b0}},data_in[25:0],parity8};
 			endcase
 		else

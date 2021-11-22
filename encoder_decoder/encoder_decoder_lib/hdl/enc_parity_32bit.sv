@@ -5,10 +5,10 @@ module enc_parity_32 (en, data_in, parity_16, parity_32);
 	input	[4:0]		parity_16;
 	output 	reg[5:0]	parity_32;
 						
-	always @ (en,data_in) begin
+	always @ (*) begin
 		if(en)
 		begin
-			parity_32[5] <= ^data_in[13:12] ^ data_in[10] ^ ^data_in[7:6] ^ data_in[3] ^ data_in[1] ^ parity_16[4];
+			parity_32[5] <= ^data_in[13:12] ^ data_in[10] ^ ^data_in[7:6] ^ data_in[3] ^ ^data_in[1:0] ^ parity_16[4];
 			parity_32[4] <= ^data_in;
 			parity_32[3] <= ^data_in[14:7] ^ parity_16[3];
 			parity_32[2] <= ^data_in[14:11] ^ ^data_in[6:3] ^ parity_16[2];
