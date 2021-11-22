@@ -11,18 +11,24 @@
 `resetall
 `timescale 1ns/10ps
 module dec_output_ctrl 
+#(
+parameter DATA_WIDTH
+)
 (
-input [31:0] codeword,
+input [DATA_WIDTH - 1:0] codeword,
 input areThereErrors,
 input isThereOneError,
 input [4:0] whichColIsError,
 output reg [1:0] num_of_errors,
-output reg [31:0] data_out
+output reg [DATA_WIDTH - 1:0] data_out
 );
 
-reg [31:0] flip_result;
+reg [DATA_WIDTH - 1:0] flip_result;
 
-dec_flip_a_bit flipper
+dec_flip_a_bit 
+#(
+.DATA_WIDTH(DATA_WIDTH)
+) flipper
 (
 .codeword (codeword),
 .whichColIsError (whichColIsError),
@@ -39,7 +45,7 @@ begin
 		data_out <= flip_result;
 	end else begin
 		num_of_errors <= 2'b10;
-		data_out <= 32'bZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ;
+		data_out <= {DATA_WIDTH{1'bZ}};
 	end
 	
 end

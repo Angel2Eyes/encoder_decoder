@@ -11,21 +11,26 @@
 `resetall
 `timescale 1ns/10ps
 module decoder 
+#(
+parameter DATA_WIDTH
+)
 (
-input [31:0] codeword,
+input [DATA_WIDTH - 1:0] codeword,
 input [1:0] codeword_width,
 output reg [1:0] num_of_errors,
-output reg [31:0] data_out
+output reg [DATA_WIDTH - 1:0] data_out
 );
 
 logic [5:0] s;
 logic isSColInMat;
 logic [4:0] whatColisS;
 logic does_s_equal_zero;
-logic [31:0] temp_data_out;
+logic [DATA_WIDTH - 1:0] temp_data_out;
 
 dec_mat_multiplier_all_options 
-
+#(
+.DATA_WIDTH(DATA_WIDTH)
+)
 multiplier (
 .codeword_with_errors (codeword),
 .codeword_width (codeword_width),
@@ -47,7 +52,10 @@ dec_comparator #(.DATA_DEPTH (6)) comp_to_zero
 .isEqual (does_s_equal_zero)
 );
 
-dec_output_ctrl output_ctrl
+dec_output_ctrl
+#(
+.DATA_WIDTH(DATA_WIDTH)
+) output_ctrl
 (
 	.codeword (codeword),
 	.areThereErrors (does_s_equal_zero),

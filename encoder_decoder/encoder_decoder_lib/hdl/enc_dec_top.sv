@@ -56,7 +56,7 @@ module enc_dec_top
 	logic [AMBA_WORD-1:0]		noise;
 		
 	
-	enc_dec_ctrl #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD), .DATA_WIDTH(DATA_WIDTH))
+	enc_dec_ctrl #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD))
 		u_enc_dec_ctrl(
 		//inputs
 		.clk(clk),
@@ -91,7 +91,7 @@ module enc_dec_top
 			.data_out(enc_data_out)
 		);
 
-	decoder #()
+	decoder #(.DATA_WIDTH(DATA_WIDTH))
 		u_decoder(
 			.codeword(dec_data_in),
 			.codeword_width(codeword_width[1:0]),
@@ -105,7 +105,7 @@ module enc_dec_top
 	always_ff @ (posedge clk)
 		dec_data_out_reg <= dec_data_out;	
 	
-	assign dec_data_in = dec_in_sel ? (enc_data_out_reg ^ noise) : data_in[DATA_WIDTH - 1 : 0];
+	assign dec_data_in = dec_in_sel ? (enc_data_out_reg ^ noise[DATA_WIDTH - 1 : 0]) : data_in[DATA_WIDTH - 1 : 0];
 	assign data_out = data_out_sel ? dec_data_out_reg : enc_data_out_reg;
 
 endmodule

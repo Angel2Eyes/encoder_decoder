@@ -12,15 +12,21 @@ module enc_dec_top_tb;
 	logic							pwrite;
 	
 	logic [32-1:0]					prdata;
-	logic [32-1:0]					data_out;
+	logic [16-1:0]					data_out;
 	
 	logic							operation_done;	//TODO
-	logic							num_of_errors;	//TODO
+	logic [1:0]						num_of_errors;	//TODO
 
     // duration for each bit = 20 * timescale = 20 * 1 ns  = 20ns
     localparam period = 40;  
 
-    enc_dec_top top (
+    enc_dec_top 
+	#(
+	.AMBA_ADDR_WIDTH(32),
+	.AMBA_WORD(32),
+	.DATA_WIDTH(16)
+	)
+	top (
 		.clk(clk),
 		.rst(rst),
 		.paddr(paddr),
@@ -48,6 +54,7 @@ module enc_dec_top_tb;
 			paddr = 32'h00000004;
 			pwrite = 1'b1;
 			psel = 1'b1;
+			//pwdata = 32'b10101010101010101010101010101010; // output should be 101010
 			pwdata = 32'b10101010101010101010101010101010; // output should be 101010
 			
 			#period;
@@ -60,11 +67,11 @@ module enc_dec_top_tb;
 			
 			#period;
 			
-			// set codeword width to be 2(10)
+			// set codeword width to be 0(00)
 			paddr = 32'h00000008;
 			pwrite = 1'b1;
 			psel = 1'b1;
-			pwdata = 32'h00000002; 
+			pwdata = 32'h00000001; 
 			
 			#period;
 			penable = 1'b1;
@@ -75,11 +82,11 @@ module enc_dec_top_tb;
 			
 			#period;
 			
-			// set noise to be on 2 LSB bits
+			// set noise to be on 1 LSB bits
 			paddr = 32'h0000000C;
 			pwrite = 1'b1;
 			psel = 1'b1;
-			pwdata = 32'h00000003; 
+			pwdata = 32'h00000001; 
 			
 			#period;
 			penable = 1'b1;
@@ -91,6 +98,7 @@ module enc_dec_top_tb;
 			// tell control to start full channel operation
 			#period;
 			paddr = 32'h00000000;
+			pwrite = 1'b1;
 			psel = 1'b1;
 			pwdata = 32'h00000002;
 			
@@ -111,6 +119,7 @@ module enc_dec_top_tb;
 			#period;
 			// tell control to start decoder operation
 			paddr = 32'h00000000;
+			pwrite = 1'b1;
 			psel = 1'b1;
 			pwdata = 32'h00000001;
 			
@@ -129,8 +138,9 @@ module enc_dec_top_tb;
 			
 			#period;
 			
-			// tell control to start decoder operation
+			// tell control to start encoder operation
 			paddr = 32'h00000000;
+			pwrite = 1'b1;
 			psel = 1'b1;
 			pwdata = 32'h00000000;
 			
@@ -150,6 +160,7 @@ module enc_dec_top_tb;
 			paddr = 32'h00000004;
 			pwrite = 1'b0;
 			psel = 1'b1;
+			pwdata = 32'h00000000;
 			
 			#period;
 			penable = 1'b1;

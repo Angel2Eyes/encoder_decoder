@@ -12,8 +12,7 @@
 `timescale 1ns/10ps
 module enc_dec_ctrl
 	#( 	parameter AMBA_ADDR_WIDTH = 32,
-		parameter AMBA_WORD = 32,
-		parameter DATA_WIDTH = 32)
+		parameter AMBA_WORD = 32)
 	(
 
 
@@ -49,13 +48,13 @@ module enc_dec_ctrl
 	);
 	
 
-	logic [DATA_WIDTH-1:0]		ctrl_reg;
+	logic [AMBA_WORD-1:0]		ctrl_reg;
 	logic [1:0]					ctrl;		
 	logic 						flagClock1, flagClock2, start;
 	logic 						regs_wr_en;
 	logic 						regs_rd_en;
 	
-	enc_dec_rgf #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD), .DATA_WIDTH(DATA_WIDTH))
+	enc_dec_rgf #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD))
 		u_enc_dec_rgf(
 		//inputs
 		.clk(clk),
