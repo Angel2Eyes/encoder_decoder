@@ -24,8 +24,9 @@ logic [4:0] whatColisS;
 logic does_s_equal_zero;
 logic [31:0] temp_data_out;
 
-dec_mat_multiplier_all_options multiplier
-(
+dec_mat_multiplier_all_options 
+
+multiplier (
 .codeword_with_errors (codeword),
 .codeword_width (codeword_width),
 .mul_result (s)
@@ -63,6 +64,6 @@ begin
  data_out <= (codeword_width[1]) ? {6'b000000,temp_data_out[31:6]} : ((codeword_width[0]) ? {5'b00000,temp_data_out[31:5]} : {4'b0000,temp_data_out[31:4]}); 
 
 end 
-// ### Please start your Verilog code here ### 
+
 
 endmodule

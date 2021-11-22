@@ -12,8 +12,7 @@
 `timescale 1ns/10ps
 module enc_dec_rgf
 	#( 	parameter AMBA_ADDR_WIDTH = 32,
-		parameter AMBA_WORD = 32,
-		parameter DATA_WIDTH = 32)
+		parameter AMBA_WORD = 32)
 	(
 
 
@@ -26,31 +25,24 @@ module enc_dec_rgf
 		
 	input	logic [AMBA_ADDR_WIDTH-1:0]		paddr,
 	input	logic [AMBA_WORD-1:0]			pwdata,
-	input	logic							penable,
-	input	logic							psel,
-	input	logic							pwrite,
+	input	logic							regs_wr_en,
+	input	logic							regs_rd_en,
 	
 	output	logic [AMBA_WORD-1:0]			prdata,
 	
 	/////////////////////////////
 	
-	output	logic [DATA_WIDTH-1:0]			ctrl,
-	output	logic [DATA_WIDTH-1:0]			data_in,
-	output	logic [DATA_WIDTH-1:0]			codeword_width,
-	output	logic [DATA_WIDTH-1:0]			noise
+	output	logic [AMBA_WORD-1:0]			ctrl,
+	output	logic [AMBA_WORD-1:0]			data_in,
+	output	logic [AMBA_WORD-1:0]			codeword_width,
+	output	logic [AMBA_WORD-1:0]			noise
 	
 	);
 	
-	
-	logic 					regs_wr_en;
-	logic 					regs_rd_en;
 	logic [3:0]				reg_sel;
-	logic [DATA_WIDTH-1:0]	read_reg;
+	logic [AMBA_WORD-1:0]	read_reg;
 	
 	
-	//enc_parity_DATA_WIDTH PDATA_WIDTH (.en(CODEWORD_WIDTH[1]),.data_in(data_in[25:11]), .parity_16(parity16), .parity_DATA_WIDTH(parityDATA_WIDTH));
-	always_comb regs_wr_en = pwrite & penable & psel;
-	always_comb regs_rd_en = ~pwrite & psel & ~penable;
 	
 	//TODO : think if we need to check other addr bits to make shure cpu refers to our block
 	
@@ -61,28 +53,28 @@ module enc_dec_rgf
 
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			ctrl <= {DATA_WIDTH{1'b0}};
+			ctrl <= {AMBA_WORD{1'b0}};
 		else if (regs_wr_en && reg_sel[0])
 			ctrl <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			data_in <= {DATA_WIDTH{1'b0}};
+			data_in <= {AMBA_WORD{1'b0}};
 		else if (regs_wr_en && reg_sel[1])
 			data_in <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			codeword_width <= {DATA_WIDTH{1'b0}};
+			codeword_width <= {AMBA_WORD{1'b0}};
 		else if (regs_wr_en && reg_sel[2])
 			codeword_width <= pwdata;
 	end
 	
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
-			noise <= {DATA_WIDTH{1'b0}};
+			noise <= {AMBA_WORD{1'b0}};
 		else if (regs_wr_en && reg_sel[3])
 			noise <= pwdata;
 	end
@@ -97,7 +89,7 @@ module enc_dec_rgf
 			endcase
 		end
 		else if(~rstn)
-			read_reg = {DATA_WIDTH{1'b0}};
+			read_reg = {AMBA_WORD{1'b0}};
 	end
 
 	assign prdata = read_reg;

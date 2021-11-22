@@ -7,7 +7,7 @@ module enc_parity_16 (en, data_in, parity_8, parity_16);
 						
 	//enc_parity_8 P8 (.data_in(data_in[3:0]), .parity(parity8));
 	
-	always @ (en,data_in) begin
+	always @ (*) begin
 		if(en)
 		begin
 			parity_16[4] <= parity_8[3] ^ ^data_in[1:0] ^ data_in[3] ^ data_in[6];

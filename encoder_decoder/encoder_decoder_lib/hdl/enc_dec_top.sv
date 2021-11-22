@@ -36,7 +36,7 @@ module enc_dec_top
 	/////////////////////////////
 	
 	output	logic							operation_done,	//TODO
-	output	logic							num_of_errors	//TODO
+	output	logic [1:0]						num_of_errors	//TODO
 	
 	);
 	
@@ -46,12 +46,14 @@ module enc_dec_top
 	logic						dec_ena;
 	logic						dec_in_sel;
 	logic						data_out_sel;
+	logic [DATA_WIDTH-1:0]		enc_data_out_reg;
 	logic [DATA_WIDTH-1:0]		enc_data_out;
+	logic [DATA_WIDTH-1:0]		dec_data_out_reg;
 	logic [DATA_WIDTH-1:0]		dec_data_out;
 	logic [DATA_WIDTH-1:0]		dec_data_in;
-	logic [DATA_WIDTH-1:0]		data_in;
-	logic [DATA_WIDTH-1:0]		codeword_width;
-	logic [DATA_WIDTH-1:0]		noise;
+	logic [AMBA_WORD-1:0]		data_in;
+	logic [AMBA_WORD-1:0]		codeword_width;
+	logic [AMBA_WORD-1:0]		noise;
 		
 	
 	enc_dec_ctrl #(.AMBA_ADDR_WIDTH(AMBA_ADDR_WIDTH), .AMBA_WORD(AMBA_WORD), .DATA_WIDTH(DATA_WIDTH))
@@ -72,7 +74,6 @@ module enc_dec_top
 		.dec_in_sel(dec_in_sel),
 		.data_out_sel(data_out_sel),
 		.operation_done(operation_done),	
-		.num_of_errors(num_of_errors),
 		.data_in(data_in),
 		.codeword_width(codeword_width),
 		.noise(noise),
@@ -82,24 +83,29 @@ module enc_dec_top
 		);
 
 	
-	encoder #(.AMBA_WORD(AMBA_WORD), .DATA_WIDTH(DATA_WIDTH))
+	encoder #(.DATA_WIDTH(DATA_WIDTH))
 		u_encoder(
 			.ena(enc_ena),
-			.codeword_width(codeword_width),
-			.data_in(data_in),
+			.codeword_width(codeword_width[1:0]),
+			.data_in(data_in[DATA_WIDTH - 1 : 0]),
 			.data_out(enc_data_out)
 		);
 
 	decoder #()
 		u_decoder(
 			.codeword(dec_data_in),
-			.codeword_width(codeword_width),
+			.codeword_width(codeword_width[1:0]),
 			.num_of_errors(num_of_errors),
 			.data_out(dec_data_out)
 		);
 		
+	always_ff @ (posedge clk)
+		enc_data_out_reg <= enc_data_out;
+		
+	always_ff @ (posedge clk)
+		dec_data_out_reg <= dec_data_out;	
 	
-	assign dec_data_in = dec_in_sel ? (enc_data_out + noise) : data_in;
-	assign data_out = data_out_sel ? dec_data_out : enc_data_out;
+	assign dec_data_in = dec_in_sel ? (enc_data_out_reg ^ noise) : data_in[DATA_WIDTH - 1 : 0];
+	assign data_out = data_out_sel ? dec_data_out_reg : enc_data_out_reg;
 
 endmodule
