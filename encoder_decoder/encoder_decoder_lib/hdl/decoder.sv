@@ -12,7 +12,7 @@
 `timescale 1ns/10ps
 module decoder 
 #(
-parameter DATA_WIDTH
+parameter DATA_WIDTH = 32
 )
 (
 input [DATA_WIDTH - 1:0] codeword,
@@ -68,9 +68,12 @@ dec_output_ctrl
 always @* 
 
 begin 
-
- data_out <= (codeword_width[1]) ? {6'b000000,temp_data_out[31:6]} : ((codeword_width[0]) ? {5'b00000,temp_data_out[31:5]} : {4'b0000,temp_data_out[31:4]}); 
-
+	case(codeword_width)
+		2'b00 	:	data_out = {4'b0000,temp_data_out[DATA_WIDTH-1:4]};
+		2'b01 	:	data_out = {5'b00000,temp_data_out[DATA_WIDTH-1:5]};
+		2'b10 	: 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
+		default : 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
+	endcase
 end 
 
 

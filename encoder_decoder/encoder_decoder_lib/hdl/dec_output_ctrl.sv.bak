@@ -12,7 +12,7 @@
 `timescale 1ns/10ps
 module dec_output_ctrl 
 #(
-parameter DATA_WIDTH = 32
+parameter DATA_WIDTH
 )
 (
 input [DATA_WIDTH - 1:0] codeword,
@@ -39,20 +39,13 @@ always @*
 begin
 	if(areThereErrors) begin
 		num_of_errors <= 2'b00;
-	end else if(isThereOneError) begin
-		num_of_errors <= 2'b01;
-	end else begin
-		num_of_errors <= 2'b10;
-	end
-	
-end
-
-always @*
-begin
-	if(areThereErrors) begin
 		data_out <= codeword;
 	end else if(isThereOneError) begin
+		num_of_errors <= 2'b01;
 		data_out <= flip_result;
+	end else begin
+		num_of_errors <= 2'b10;
+		data_out <= {DATA_WIDTH{1'bZ}};
 	end
 	
 end

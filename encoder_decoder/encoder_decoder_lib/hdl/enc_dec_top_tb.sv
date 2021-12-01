@@ -3,7 +3,7 @@
 module enc_dec_top_tb;
 
 	logic							clk = 1;
-	logic							rst = 1;
+	logic							rst = 0;
 	
 	logic [32-1:0]					paddr;
 	logic [32-1:0]					pwdata;
@@ -20,7 +20,7 @@ module enc_dec_top_tb;
     // duration for each bit = 20 * timescale = 20 * 1 ns  = 20ns
     localparam period = 40;  
 
-    enc_dec_top 
+    ECC_ENC_DEC 
 	#(
 	.AMBA_ADDR_WIDTH(32),
 	.AMBA_WORD(32),
@@ -47,7 +47,7 @@ module enc_dec_top_tb;
 		end
     initial // initial block executes only once
         begin
-			#period rst = 0;
+			#period rst = 1;
 			#period;
 			
 			// data input is 32'b00000010101010101010101010101010
@@ -160,7 +160,7 @@ module enc_dec_top_tb;
 			paddr = 32'h00000004;
 			pwrite = 1'b0;
 			psel = 1'b1;
-			pwdata = 32'h00000000;
+			pwdata = 32'hXXXXXXXX;
 			
 			#period;
 			penable = 1'b1;
@@ -169,6 +169,10 @@ module enc_dec_top_tb;
 			#period;
 			psel = 1'b0;
 			penable = 1'b0;
+			
+			
+			
+
 			
 			
 			

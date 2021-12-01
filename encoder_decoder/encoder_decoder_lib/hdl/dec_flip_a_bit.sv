@@ -12,7 +12,7 @@
 `timescale 1ns/10ps
 module dec_flip_a_bit 
 #(
-parameter DATA_WIDTH
+parameter DATA_WIDTH = 32
 )
 (
 input [DATA_WIDTH - 1:0] codeword,

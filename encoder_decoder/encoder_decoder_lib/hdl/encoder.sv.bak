@@ -78,5 +78,16 @@ module encoder
 	always_comb u_ena[0] = ena & |codeword_width;
 	always_comb u_ena[1] = ena & codeword_width[1];
 	
+	// always @ (*) begin
+		// if(ena)
+			// case(codeword_width)
+				// 2'b00 	:	data_out = {{(DATA_WIDTH-8){'b0}},data_in[3:0],parity8};
+				// 2'b01 	:	data_out = {{(DATA_WIDTH-16){'b0}},data_in[10:0],parity16};
+				// 2'b10 	: 	data_out = {data_in[DATA_WIDTH-7:0],parity32};
+				// default : 	data_out = {{(DATA_WIDTH-8){'b0}},data_in[25:0],parity8};
+			// endcase
+		// else
+			// data_out = {DATA_WIDTH{1'b0}};
+	// end
 
 endmodule

@@ -25,10 +25,12 @@ module enc_dec_rgf
 		
 	input	logic [AMBA_ADDR_WIDTH-1:0]		paddr,
 	input	logic [AMBA_WORD-1:0]			pwdata,
-	input	logic							regs_wr_en,
-	input	logic							regs_rd_en,
+	input	logic							penable,
+	input	logic							psel,
+	input	logic							pwrite,
 	
 	output	logic [AMBA_WORD-1:0]			prdata,
+	output	logic							regs_wr_en,
 	
 	/////////////////////////////
 	
@@ -41,7 +43,7 @@ module enc_dec_rgf
 	
 	logic [3:0]				reg_sel;
 	logic [AMBA_WORD-1:0]	read_reg;
-	
+	logic					regs_rd_en;
 	
 	
 	//TODO : think if we need to check other addr bits to make shure cpu refers to our block
@@ -50,6 +52,9 @@ module enc_dec_rgf
 	always_comb reg_sel[1] = paddr[2] & ~paddr[3];
 	always_comb reg_sel[2] = paddr[3] & ~paddr[2];
 	always_comb reg_sel[3] = paddr[2] & paddr[3];
+	
+	always_comb regs_wr_en = pwrite & penable & psel;
+	always_comb regs_rd_en = ~pwrite & psel & ~penable;
 
 	always_ff @ (posedge clk or negedge rstn) begin
 		if(~rstn)
