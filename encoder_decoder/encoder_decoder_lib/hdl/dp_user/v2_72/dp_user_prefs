@@ -1,9 +1,10 @@
 [LexParser]
 [LexParser.LexVerilog2005]
 [Editor]
-recentFile0=D:/Users/yuvalsaa/Documents/LogicSynthesisCourse/new/encoder_decoder/encoder_decoder_lib/hdl/enc_dec_top.sv
+recentFile0=D:/Users/yuvalsaa/Documents/LogicSynthesisCourse/final_version/new/encoder_decoder/encoder_decoder_lib/hdl/decoder.sv
 lastFilter=.sv
-mark.lineImage=blueball
+mark.lineImage=yellowball
+recentFile1=D:/Users/yuvalsaa/Documents/LogicSynthesisCourse/new/encoder_decoder/encoder_decoder_lib/hdl/enc_dec_top.sv
 [Printer]
 [ToolbarFrames]
 geom0Group1=top H

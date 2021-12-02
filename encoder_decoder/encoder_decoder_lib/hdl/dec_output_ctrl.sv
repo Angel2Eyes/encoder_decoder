@@ -23,7 +23,7 @@ output reg [1:0] num_of_errors,
 output reg [DATA_WIDTH - 1:0] data_out
 );
 
-reg [DATA_WIDTH - 1:0] flip_result;
+logic [DATA_WIDTH - 1:0] flip_result;
 
 dec_flip_a_bit 
 #(
