@@ -17,6 +17,7 @@ parameter DATA_WIDTH = 32
 (
 input [DATA_WIDTH - 1:0] codeword,
 input [1:0] codeword_width,
+input		enable,
 output reg [1:0] num_of_errors,
 output reg [DATA_WIDTH - 1:0] data_out
 );
@@ -68,12 +69,15 @@ dec_output_ctrl
 always @* 
 
 begin 
+if(enable)
 	case(codeword_width)
 		2'b00 	:	data_out = {4'b0000,temp_data_out[DATA_WIDTH-1:4]};
 		2'b01 	:	data_out = {5'b00000,temp_data_out[DATA_WIDTH-1:5]};
 		2'b10 	: 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
 		default : 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
 	endcase
+else
+	data_out = {DATA_WIDTH{1'b0}};
 end 
 
 

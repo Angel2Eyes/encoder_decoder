@@ -51,7 +51,7 @@ module ECC_ENC_DEC
 	logic [DATA_WIDTH-1:0]		dec_data_out_reg;
 	logic [DATA_WIDTH-1:0]		dec_data_out;
 	logic [DATA_WIDTH-1:0]		dec_data_in;
-	logic [DATA_WIDTH-1:0]		ctrl;
+	logic [AMBA_WORD-1:0]		ctrl;
 	logic [AMBA_WORD-1:0]		data_in;
 	logic [AMBA_WORD-1:0]		codeword_width;
 	logic [AMBA_WORD-1:0]		noise;
@@ -114,6 +114,7 @@ module ECC_ENC_DEC
 
 	decoder #(.DATA_WIDTH(DATA_WIDTH))
 		u_decoder(
+			.enable(dec_ena),
 			.codeword(dec_data_in),
 			.codeword_width(codeword_width[1:0]),
 			.num_of_errors(num_of_errors),
