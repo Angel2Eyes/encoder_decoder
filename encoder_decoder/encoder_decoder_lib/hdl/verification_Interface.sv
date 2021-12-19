@@ -32,10 +32,12 @@ interface verification_Interface
     
     logic [1:0] type_of_work; //0 = nothing, 1 = encode, 2 = decode, 3 = full channel
     logic [DATA_WIDTH-1:0]			data_in;
+    logic [DATA_WIDTH-1:0]			stim_num_of_errors;
+    
 
-    modport stimulus (output clk,rst,paddr,pwdata,penable,psel,pwrite, type_of_work);
+    modport stimulus (output clk,rst,paddr,pwdata,penable,psel,pwrite, type_of_work,data_in,stim_num_of_errors);
     modport ecc_enc_dec (input clk,rst,paddr,pwdata,penable,psel,pwrite, output prdata,data_out,operation_done,num_of_errors);
-    modport chcker_coverager (input clk,rst,paddr,pwdata,penable,psel,pwrite,prdata,data_out,operation_done,num_of_errors, type_of_work);
+    modport chcker_coverager (input clk,rst,paddr,pwdata,penable,psel,pwrite,prdata,data_out,operation_done,num_of_errors, type_of_work,data_in,stim_num_of_errors);
  
  
 endinterface 
