@@ -14,6 +14,10 @@ module verification_checker(
   verification_interface.checker_coverager checker_bus
 ) ;
 
+initial begin
+  
+end
+
 property rst_active;
 				@(checker_bus.rst) checker_bus.rst == 0 |=> checker_bus.data_out == {DATA_WIDTH{1'b0}};
 				endproperty 
