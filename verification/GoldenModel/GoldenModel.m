@@ -22,11 +22,12 @@ H3 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
 outputFileID = fopen('goldenOutput.txt','w');
 inputFileID = fopen('goldenInput1.txt','r');
 
-formatSpec = '%d %d %d %f %f %d';
+formatSpec = '%d %d %d %d %d %d';
 sizeA = [6 Inf];
 A = fscanf(inputFileID,formatSpec,sizeA);
 A(:)
 size(transpose(A))
+A = transpose(A);
 
 for i = 1:size(A,1)
     
@@ -36,21 +37,23 @@ for i = 1:size(A,1)
    task_id = A(i,1);          % task id
    operation = A(i,2);        % 0 = encode, 1 = decode, 2 = full channel
    input_data_size =  A(i,3); % indicator of codeword width: 0 = 8, 1 = 16, 2 = 32
-   data = A(i,4:end);         % vector of data read
+   data = A(i,4);             % vector of data read
+   noise = A(i, 5);
+   num_of_errors_input = A(i,6);
    
    % do operation and write to file
    % data written in format: index, num_of_errors, output
    if operation == 0
-       encoded_data = encode(data(1:input_data_size), input_data_size);
-       output = cat(2,task_id,[0,0],encoded_data);
+       encoded_data = encode(data, input_data_size);
+       output = cat(2,task_id,[0],bi2de(encoded_data));
        dlmwrite('goldenOutput.txt',output,'delimiter',' ','-append');
    else
        if operation == 1
-       [decoded_data, num_of_errors] = decode(data(1:input_data_size), input_data_size);
-       output = cat(2,task_id,num_of_errors,decoded_data);
+       [decoded_data, num_of_errors] = decode(data, input_data_size);
+       output = cat(2,task_id,num_of_errors,bi2de(decoded_data));
        dlmwrite('goldenOutput.txt', output,'delimiter',' ','-append');
        else
-           output = cat(2,task_id,[0,0],data);
+           output = cat(2,task_id,[0],bi2de(data));
            dlmwrite('goldenOutput.txt',output,'delimiter',' ','-append');
        end
    end
@@ -62,7 +65,7 @@ global H1 H2 H3;
     switch size
         % info size 4
         case 0
-            
+            vector = de2bi(vector,4);
             % get the initial parity vector
             parity = H1(:,1:4) * transpose(vector);
             
@@ -79,7 +82,7 @@ global H1 H2 H3;
             
         % info size 11
         case 1
-            
+            vector = de2bi(vector,11);
             % get the initial parity vector
             parity = H2(:,1:11) * transpose(vector);
             
@@ -96,7 +99,7 @@ global H1 H2 H3;
             
         % info size 26
         otherwise
-            
+            vector = de2bi(vector,26);
             % get the initial parity vector
             parity = H3(:,1:26) * transpose(vector);
             
@@ -118,6 +121,7 @@ global H1 H2 H3;
     switch size
         % codeword size 8
         case 0
+            vector = de2bi(vector,8);
             % do matrix multiploication
             leftover = H1 * transpose(vector);
             leftover = mod(leftover,2); 
@@ -162,7 +166,7 @@ global H1 H2 H3;
             
         % codeword size 16
         case 1
-            
+            vector = de2bi(vector,16);
             % do matrix multiploication
             leftover = H2 * transpose(vector);
             leftover = mod(leftover,2); 
@@ -207,7 +211,7 @@ global H1 H2 H3;
         
         % codeword size 32
         otherwise
-            
+            vector = de2bi(vector,32);
              % do matrix multiploication
             leftover = H3 * transpose(vector);
             leftover = mod(leftover,2); 
