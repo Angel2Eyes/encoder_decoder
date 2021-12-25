@@ -71,10 +71,10 @@ always @*
 begin 
 if(enable)
 	case(codeword_width)
-		2'b00 	:	data_out = {4'b0000,temp_data_out[DATA_WIDTH-1:4]};
-		2'b01 	:	data_out = {5'b00000,temp_data_out[DATA_WIDTH-1:5]};
-		2'b10 	: 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
-		default : 	data_out = {6'b000000,temp_data_out[DATA_WIDTH-1:6]};
+		2'b00 	:	data_out = {{(DATA_WIDTH-4){1'b0}},temp_data_out[7:4]};
+		2'b01 	:	data_out = {{(DATA_WIDTH-11){1'b0}},temp_data_out[15:5]};
+		2'b10 	: 	data_out = {{(DATA_WIDTH-26){1'b0}},temp_data_out[31:6]};
+		default : 	data_out = {{(DATA_WIDTH-6){1'b0}},temp_data_out[25:6]};
 	endcase
 else
 	data_out = {DATA_WIDTH{1'b0}};

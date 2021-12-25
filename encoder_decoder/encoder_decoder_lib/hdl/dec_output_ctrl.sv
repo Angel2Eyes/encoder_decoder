@@ -53,6 +53,8 @@ begin
 		data_out <= codeword;
 	end else if(isThereOneError) begin
 		data_out <= flip_result;
+	end else begin
+		data_out <= {DATA_WIDTH{1'b0}};
 	end
 	
 end

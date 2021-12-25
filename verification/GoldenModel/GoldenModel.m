@@ -22,36 +22,41 @@ H3 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1;
 outputFileID = fopen('goldenOutput.txt','w');
 inputFileID = fopen('input.txt','r');
 
-formatSpec = '%d %d %d %d %d %d';
+formatSpec = '%d %d %d %f %d %f';
 sizeA = [6 Inf];
-A = fscanf(inputFileID,formatSpec,sizeA);
-A = transpose(A);
+A = textscan(inputFileID,formatSpec);
+%A(:)
+%size(transpose(A))
+%A = transpose(A);
 
-for i = 1:size(A,1)
+for i = 1:size(A,2)
     
    % get task data
    % data expected in format: index, operation, input size, input, noise,
    % num_of_errors
-   task_id = A(i,1);          % task id
-   operation = A(i,2);        % 0 = encode, 1 = decode, 2 = full channel
-   input_data_size =  A(i,3); % indicator of codeword width: 0 = 8, 1 = 16, 2 = 32
-   data = A(i,4);             % vector of data read
-   noise = A(i, 5);
-   num_of_errors_input = A(i,6);
+   task_id = A{1}(i);          % task id
+   operation = A{2}(i);        % 0 = encode, 1 = decode, 2 = full channel
+   input_data_size =  A{3}(i); % indicator of codeword width: 0 = 8, 1 = 16, 2 = 32
+   data = A{4}(i);             % vector of data read
+   noise = A{5}(i);
+   num_of_errors_input = A{6}(i);
+   
+   data_size = 2^(input_data_size+3) - (4 + input_data_size);
+   bin_data = bi2de(data,32);
    
    % do operation and write to file
    % data written in format: index, num_of_errors, output
    if operation == 0
-       encoded_data = encode(data, input_data_size);
-       output = cat(2,task_id,[0],bi2de(encoded_data));
+       encoded_data = transpose(encode(bin_data, input_data_size));
+       output = cat(2,task_id,[0],bi2de(encoded_data,32));
        dlmwrite('goldenOutput.txt',output,'delimiter',' ','-append','precision','%f');
    else
        if operation == 1
-       [decoded_data, num_of_errors] = decode(data, input_data_size);
-       output = cat(2,task_id,num_of_errors,bi2de(decoded_data));
-       dlmwrite('goldenOutput.txt', output,'delimiter',' ','-append','precision','f');
+           [decoded_data, num_of_errors] = decode(bin_data, input_data_size);
+           output = cat(2,task_id,num_of_errors,bi2de(decoded_data,32));
+           dlmwrite('goldenOutput.txt', output,'delimiter',' ','-append','precision','%f');
        else
-           output = cat(2,task_id,[num_of_errors_input],data);
+           output = cat(2,task_id,[num_of_errors_input],bi2de(bin_data(1:data_size),data_size));
            dlmwrite('goldenOutput.txt',output,'delimiter',' ','-append','precision','%f');
        end
    end
@@ -63,17 +68,16 @@ global H1 H2 H3;
     switch size
         % info size 4
         case 0
-            vector = de2bi(vector,32);
-            vector = vector(1:4);
+            vector = double(vector(29:32));
             % get the initial parity vector
-            parity = H1(:,1:4) * transpose(vector);
+            parity = H1(:,1:4) * vector;
             
             % make it binary
             parity = mod(parity,2);
             
             % the last parity bit is the sum of all other parities plus
             % info vector
-            parity(1) = mod(sum(parity(2:4) == 1) + sum(vector(:) == 1),2);
+            parity(1) = mod(sum(parity),2);
             
             % return it
             encoded(1:4) = vector;
@@ -81,17 +85,16 @@ global H1 H2 H3;
             
         % info size 11
         case 1
-            vector = de2bi(vector,32);
-            vector = vector(1:11);
+            vector = double(vector(22:32));
             % get the initial parity vector
-            parity = H2(:,1:11) * transpose(vector);
+            parity = H2(:,1:11) * vector;
             
             % make it binary
             parity = mod(parity,2);
             
             % the last parity bit is the sum of all other parities plus
             % info vector
-            parity(1) = mod(sum(parity(2:5) == 1) + sum(vector(:) == 1),2);
+            parity(1) = mod(sum(parity),2);
             
             % return it
             encoded(1:11) = vector;
@@ -99,17 +102,16 @@ global H1 H2 H3;
             
         % info size 26
         otherwise
-            vector = de2bi(vector,32);
-            vector = vector(1:26);
+            vector = double(vector(7:32));
             % get the initial parity vector
-            parity = H3(:,1:26) * transpose(vector);
+            parity = H3(:,1:26) * vector;
             
             % make it binary
             parity = mod(parity,2);
             
             % the last parity bit is the sum of all other parities plus
             % info vector
-            parity(1) = mod(sum(parity(2:6) == 1) + sum(vector(:) == 1),2);
+            parity(1) = mod(sum(parity),2);
             
             % return it
             encoded(1:26) = vector;
@@ -122,10 +124,9 @@ global H1 H2 H3;
     switch size
         % codeword size 8
         case 0
-            vector = de2bi(vector,32);
-            vector = vector(1:8);
+            vector = vector(25:32);
             % do matrix multiploication
-            leftover = H1 * transpose(vector);
+            leftover = H1 * double(vector);
             leftover = mod(leftover,2); 
             
             % if result is 0
@@ -168,10 +169,9 @@ global H1 H2 H3;
             
         % codeword size 16
         case 1
-            vector = de2bi(vector,32);
-            vector = vector(1:16);
+            vector = vector(17:32);
             % do matrix multiploication
-            leftover = H2 * transpose(vector);
+            leftover = H2 * double(vector);
             leftover = mod(leftover,2); 
             
             % if result is 0
@@ -214,9 +214,8 @@ global H1 H2 H3;
         
         % codeword size 32
         otherwise
-            vector = de2bi(vector,32);
              % do matrix multiploication
-            leftover = H3 * transpose(vector);
+            leftover = H3 * double(vector);
             leftover = mod(leftover,2); 
             
             % if result is 0
