@@ -50,7 +50,7 @@ integer i,j;
 integer num_of_err;
 integer index;
 
-string  str = "D:/Users/yuvalsaa/Documents/verification/encoder_decoder/input.txt";
+string  str = "D:/Users/katrinn/Desktop/GoldenModel/input.txt";
 
 reg [AMBA_WORD-1:0] data_in;
 reg [AMBA_WORD-1:0] noise;
@@ -89,7 +89,7 @@ function void creat_input_file();
 	
 	rand_d = new();
 
-	for(j=1;j<11;j++) begin // 10 transactions
+	for(j=0;j<20;j++) begin // 10 transactions
 
 		for(i=0;i<3;i++) begin	
 			noise = 'h0;
@@ -134,7 +134,8 @@ begin : stim_proc
   
   creat_input_file();
   
-  $display("create output file now");
+  $display("Please run matlab program now");
+  $stop;
   
   @(posedge stim_bus.clk); // wait til next rising edge (in other words, wait 20ns)
   

@@ -16,7 +16,7 @@ module Coverage #(
   ;
 
 
-covergroup regular_rest @( posedge coverage_bus.clk );
+covergroup regular_test @( posedge coverage_bus.clk );
 				
 				Reset: coverpoint coverage_bus.rst{
         bins low = {0};
@@ -45,7 +45,16 @@ covergroup regular_rest @( posedge coverage_bus.clk );
         bins one_err = {1};
         bins two_err = {2};
         }
+		
+		Cross_Ctrl_CW : cross Control, Codeword_width;
+		
+		Full_Chan_Comb : cross Control, Codeword_width, Noise_add, Num_of_errors{
+			ignore_bins not_full_channel = Full_Chan_Comb with (Control != 2);
+			ignore_bins noise_error_mismatch = Full_Chan_Comb with ((|(Noise_add) ^ Num_of_errors) == 1);
+		}
         //clk, rst, ctrl, codeword_width, noise, num_of_errors
 				endgroup 
+				
+	regular_test tst = new();
 
 endmodule
