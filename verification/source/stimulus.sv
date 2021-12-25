@@ -50,7 +50,7 @@ integer i,j;
 integer num_of_err;
 integer index;
 
-string  str = "D:/Users/katrinn/Desktop/GoldenModel/input.txt";
+string  str = "D:/Users/yuvalsaa/Documents/verification/encoder_decoder/input.txt";
 
 reg [AMBA_WORD-1:0] data_in;
 reg [AMBA_WORD-1:0] noise;
@@ -126,6 +126,10 @@ begin : stim_proc
   
   // Initilization
   stim_bus.clk = 1; // start with clock and reset at '1', while enable at '0'
+  
+  stim_bus.rst = 1;
+  
+  @(posedge stim_bus.clk); // wait til next rising edge (in other words, wait 20ns)
   
   stim_bus.rst = 0; // reset active low
   

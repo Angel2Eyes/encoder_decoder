@@ -97,14 +97,17 @@ begin : res_proc
 end  
 
 property rst_active;
-				@(checker_bus.rst) checker_bus.rst == 0 |=> checker_bus.data_out == {DATA_WIDTH{1'b0}};
+				@(checker_bus.rst) checker_bus.rst == 0 |=> checker_bus.data_out == 'h0;
 				endproperty 
 				
 assert property (rst_active) 
   else $error("Error data_out doesn't reset when reset is active");
   cover property (rst_active);
 			
-			
-assert property (@(posedge checker_bus.clk) checker_bus.start == 1 |-> ##[1:2] checker_bus.operation_done == 1) else $error("operatin_done fail");
-
+property operation_done;
+				@(posedge checker_bus.clk) checker_bus.start == 1 |-> ##[1:2] checker_bus.operation_done == 1;
+				endproperty 
+						
+assert property (operation_done) else $error("operatin_done fail");
+  cover property (operation_done);
 endmodule
