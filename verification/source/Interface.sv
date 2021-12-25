@@ -15,20 +15,17 @@ interface Interface #(
   parameter AMBA_WORD = 32,
   parameter AMBA_ADDR_WIDTH = 32) ();
 
-`define CTRL            AMBA_ADDR_WIDTH'h0
-`define DATA_IN         AMBA_ADDR_WIDTH'h4
-`define CODEWORD_WIDTH  AMBA_ADDR_WIDTH'h8
-`define NIOSE           AMBA_ADDR_WIDTH'hC
 
 //signal decleration
 logic clk;
 logic rst;
+logic start;
+logic operation_done;
 logic [1:0] ctrl;
-logic [DATA_WIDTH - 1:0] data_in;
+//logic [DATA_WIDTH - 1:0] data_in;
 logic [1:0] codeword_width;
-logic [AMBA_WORD - 1:0] noise;
+logic [DATA_WIDTH - 1:0] noise;
 logic [DATA_WIDTH - 1:0] data_out;
-logic [1:0] err_num;
 logic [1:0] num_of_errors;
 
 //APB bus signals
@@ -40,23 +37,10 @@ logic [AMBA_WORD - 1:0] pwdata;
 logic [AMBA_WORD - 1:0] prdata;
 
 //add counter for num of error (in noise not output of dut)
-//Add BFM of APB bus
-task apb_write (input logic [AMBA_ADDR_WIDTH - 1:0] addr, input logic [AMBA_WORD - 1:0] data);
-   paddr = addr;
-   pwdata = data;
-  	pwrite = 1'b1;
-  	psel = 1'b1;
-  	
-  	@(posedge clk)
-  	penable = 1'b1;
-  	
-  	@(posedge clk)
-  	psel = 1'b0;
-  	penable = 1'b0;
-endtask
 
-//modport stimulus(); - will import task and output ctrl, data_in, codewidth and apb bus signals
+modport stimulus(output clk, rst, ctrl, codeword_width, noise, start, paddr, pwdata, penable, psel, pwrite); //will output clk, reset, err_num and apb bus signals //ctrl, data_in, codeword_width, noise
 modport ecc_enc_dec (input clk,rst,paddr,pwdata,penable,psel,pwrite, output prdata,data_out,operation_done,num_of_errors);
-modport checker_coverager ( input clk, rst, ctrl, data_in, codeword_width, noise, err_num);
+modport verification_checker ( input clk, rst, ctrl, start,operation_done, data_out, num_of_errors);
+modport checker_coverager ( input clk, rst, ctrl, codeword_width, noise, num_of_errors);
 
 endinterface

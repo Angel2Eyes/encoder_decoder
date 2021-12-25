@@ -40,12 +40,12 @@ covergroup regular_rest @( posedge coverage_bus.clk );
         bins noise = {[1:$]};
         }
         
-        Num_of_errors: coverpoint coverage_bus.err_num{
+        Num_of_errors: coverpoint coverage_bus.num_of_errors{
         bins no_err = {0};
         bins one_err = {1};
         bins two_err = {2};
         }
-        //clk, rst, ctrl, data_in, codeword_width, noise
+        //clk, rst, ctrl, codeword_width, noise, num_of_errors
 				endgroup 
 
 endmodule
