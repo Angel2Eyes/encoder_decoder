@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : ECC_ENC_DEC
+Version: O-2018.06-SP4
+Date   : Thu Dec 30 20:16:37 2021
+****************************************
+
+Library(s) Used:
+
+    slow (File: /users/agnon/pp2022/katrinn/lab3/DC/LibraryFiles/db/slow.db)
+
+Number of ports:                         2480
+Number of nets:                          5041
+Number of cells:                         2845
+Number of combinational cells:           2466
+Number of sequential cells:               226
+Number of macros/black boxes:               0
+Number of buf/inv:                        937
+Number of references:                      28
+
+Combinational area:              65556.691875
+Buf/Inv area:                    17666.510588
+Noncombinational area:           15790.420725
+Macro/Black Box area:                0.000000
+Net Interconnect area:         1375506.948959
+
+Total cell area:                 81347.112600
+Total area:                    1456854.061559
+1
