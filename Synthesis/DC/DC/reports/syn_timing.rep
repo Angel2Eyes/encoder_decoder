@@ -1,0 +1,143 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : ECC_ENC_DEC
+Version: O-2018.06-SP4
+Date   : Thu Dec 30 20:16:37 2021
+****************************************
+
+Operating Conditions: slow   Library: slow
+Wire Load Model Mode: top
+
+  Startpoint: u_enc_dec_rgf/ctrl_reg[0]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: dec_data_out_reg_reg[1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  ECC_ENC_DEC        tsmc18_wl50           slow
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.60       0.60
+  u_enc_dec_rgf/ctrl_reg[0]/CK (DFFRX4)                   0.00       0.60 r
+  u_enc_dec_rgf/ctrl_reg[0]/Q (DFFRX4)                    0.80       1.40 r
+  u_enc_dec_rgf/ctrl[0] (enc_dec_rgf_AMBA_ADDR_WIDTH32_AMBA_WORD32)
+                                                          0.00       1.40 r
+  u_enc_dec_ctrl/ctrl_reg[0] (enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32)
+                                                          0.00       1.40 r
+  u_enc_dec_ctrl/U5/Y (INVX20)                            0.30       1.71 f
+  u_enc_dec_ctrl/U8/Y (AND2X4)                            0.33       2.04 f
+  u_enc_dec_ctrl/dec_in_sel (enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32)
+                                                          0.00       2.04 f
+  U142/Y (INVX20)                                         0.33       2.37 r
+  U179/Y (INVX8)                                          0.13       2.50 f
+  U171/Y (INVX8)                                          0.23       2.73 r
+  U175/Y (BUFX20)                                         0.16       2.89 r
+  U17/Y (OAI2BB2X4)                                       0.28       3.17 r
+  u_decoder/codeword[31] (decoder_DATA_WIDTH32)           0.00       3.17 r
+  u_decoder/U91/Y (BUFX20)                                0.24       3.41 r
+  u_decoder/multiplier/codeword_with_errors[31] (dec_mat_multiplier_all_options_DATA_WIDTH32)
+                                                          0.00       3.41 r
+  u_decoder/multiplier/genblk1.inst_32bit/codeword_with_errors[31] (dec_mat_multiplier_32bit)
+                                                          0.00       3.41 r
+  u_decoder/multiplier/genblk1.inst_32bit/U56/Y (XOR2X4)
+                                                          0.34       3.76 r
+  u_decoder/multiplier/genblk1.inst_32bit/U58/Y (XOR2X4)
+                                                          0.37       4.13 r
+  u_decoder/multiplier/genblk1.inst_32bit/U22/Y (BUFX20)
+                                                          0.16       4.28 r
+  u_decoder/multiplier/genblk1.inst_32bit/U33/Y (XOR2X4)
+                                                          0.32       4.60 r
+  u_decoder/multiplier/genblk1.inst_32bit/U38/Y (XOR2X4)
+                                                          0.37       4.97 r
+  u_decoder/multiplier/genblk1.inst_32bit/U21/Y (BUFX20)
+                                                          0.16       5.13 r
+  u_decoder/multiplier/genblk1.inst_32bit/U28/Y (XOR2X4)
+                                                          0.32       5.45 r
+  u_decoder/multiplier/genblk1.inst_32bit/U61/Y (XOR2X4)
+                                                          0.36       5.81 r
+  u_decoder/multiplier/genblk1.inst_32bit/U4/Y (BUFX16)
+                                                          0.17       5.98 r
+  u_decoder/multiplier/genblk1.inst_32bit/U35/Y (XOR2X4)
+                                                          0.32       6.30 r
+  u_decoder/multiplier/genblk1.inst_32bit/U40/Y (XOR2X4)
+                                                          0.33       6.63 r
+  u_decoder/multiplier/genblk1.inst_32bit/mul_result[1] (dec_mat_multiplier_32bit)
+                                                          0.00       6.63 r
+  u_decoder/multiplier/U8/Y (OAI2BB1X4)                   0.38       7.01 r
+  u_decoder/multiplier/mul_result[1] (dec_mat_multiplier_all_options_DATA_WIDTH32)
+                                                          0.00       7.01 r
+  u_decoder/is_col/s[1] (dec_is_column)                   0.00       7.01 r
+  u_decoder/is_col/U102/Y (INVX8)                         0.20       7.21 f
+  u_decoder/is_col/U25/Y (CLKINVX12)                      0.35       7.56 r
+  u_decoder/is_col/U22/Y (CLKBUFX20)                      0.21       7.78 r
+  u_decoder/is_col/genblk1[10].comparator/A[1] (dec_comparator_all_options_22)
+                                                          0.00       7.78 r
+  u_decoder/is_col/genblk1[10].comparator/U13/Y (INVX12)
+                                                          0.23       8.01 f
+  u_decoder/is_col/genblk1[10].comparator/U5/Y (INVX8)
+                                                          0.19       8.20 r
+  u_decoder/is_col/genblk1[10].comparator/inst_16bit/A[1] (dec_comparator_DATA_DEPTH5_22)
+                                                          0.00       8.20 r
+  u_decoder/is_col/genblk1[10].comparator/inst_16bit/U1/Y (XNOR2X2)
+                                                          0.38       8.58 f
+  u_decoder/is_col/genblk1[10].comparator/inst_16bit/U7/Y (AND3X4)
+                                                          0.28       8.86 f
+  u_decoder/is_col/genblk1[10].comparator/inst_16bit/U6/Y (AND3X4)
+                                                          0.24       9.11 f
+  u_decoder/is_col/genblk1[10].comparator/inst_16bit/isEqual (dec_comparator_DATA_DEPTH5_22)
+                                                          0.00       9.11 f
+  u_decoder/is_col/genblk1[10].comparator/U2/Y (AOI22X4)
+                                                          0.33       9.43 r
+  u_decoder/is_col/genblk1[10].comparator/U1/Y (OAI2BB2X4)
+                                                          0.22       9.65 f
+  u_decoder/is_col/genblk1[10].comparator/isEqual (dec_comparator_all_options_22)
+                                                          0.00       9.65 f
+  u_decoder/is_col/U9/Y (BUFX20)                          0.25       9.91 f
+  u_decoder/is_col/U83/Y (OR4X4)                          0.50      10.41 f
+  u_decoder/is_col/U99/Y (OR2X4)                          0.37      10.78 f
+  u_decoder/is_col/U38/Y (NOR4X4)                         0.53      11.31 r
+  u_decoder/is_col/U8/Y (NAND3X4)                         0.22      11.54 f
+  u_decoder/is_col/U43/Y (AOI22XL)                        1.15      12.69 r
+  u_decoder/is_col/U41/Y (BUFX8)                          0.24      12.93 r
+  u_decoder/is_col/U3/Y (NAND4X4)                         0.25      13.18 f
+  u_decoder/is_col/isCol (dec_is_column)                  0.00      13.18 f
+  u_decoder/output_ctrl/isThereOneError (dec_output_ctrl_DATA_WIDTH32)
+                                                          0.00      13.18 f
+  u_decoder/output_ctrl/U36/Y (NOR2BX4)                   0.35      13.53 f
+  u_decoder/output_ctrl/U66/Y (CLKINVX8)                  0.16      13.69 r
+  u_decoder/output_ctrl/U39/Y (INVX16)                    0.28      13.97 f
+  u_decoder/output_ctrl/U6/Y (BUFX20)                     0.17      14.14 f
+  u_decoder/output_ctrl/U48/Y (OAI2BB2X4)                 0.38      14.52 f
+  u_decoder/output_ctrl/data_out[7] (dec_output_ctrl_DATA_WIDTH32)
+                                                          0.00      14.52 f
+  u_decoder/U49/Y (NAND2X4)                               0.31      14.84 r
+  u_decoder/U68/Y (AND3X4)                                0.31      15.15 r
+  u_decoder/U17/Y (CLKINVX3)                              0.18      15.33 f
+  u_decoder/data_out[1] (decoder_DATA_WIDTH32)            0.00      15.33 f
+  dec_data_out_reg_reg[1]/D (DFFRXL)                      0.00      15.33 f
+  data arrival time                                                 15.33
+
+  clock clk (rise edge)                                  15.00      15.00
+  clock network delay (ideal)                             0.60      15.60
+  clock uncertainty                                      -0.10      15.50
+  dec_data_out_reg_reg[1]/CK (DFFRXL)                     0.00      15.50 r
+  library setup time                                     -0.17      15.33
+  data required time                                                15.33
+  --------------------------------------------------------------------------
+  data required time                                                15.33
+  data arrival time                                                -15.33
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1

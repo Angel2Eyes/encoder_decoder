@@ -1,0 +1,292 @@
+ 
+****************************************
+check_design summary:
+Version:     O-2018.06-SP4
+Date:        Thu Dec 30 20:16:37 2021
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     48
+    Unconnected ports (LINT-28)                                    36
+    Shorted outputs (LINT-31)                                       6
+    Constant outputs (LINT-52)                                      6
+
+Cells                                                             108
+    Connected to power or ground (LINT-32)                         54
+    Nets connected to multiple pins on same cell (LINT-33)         54
+
+Tristate                                                            5
+    Single tristate driver drives an input pin (LINT-63)            5
+--------------------------------------------------------------------------------
+
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[15]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[14]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[13]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[12]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[11]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[9]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[8]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[7]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[6]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[5]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[4]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[3]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', port 'ctrl_reg[2]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'encoder_DATA_WIDTH32', port 'data_in[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'enc_dec_ctrl_AMBA_ADDR_WIDTH32_AMBA_WORD32', output port 'dec_ena' is connected directly to output port 'data_out_sel'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to output port 'data_out[26]'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to output port 'data_out[27]'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to output port 'data_out[28]'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to output port 'data_out[29]'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to output port 'data_out[30]'. (LINT-31)
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[5]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[4]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', a pin on submodule 'comp_to_zero' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[0].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[0].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[0].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 1. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[1].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[1].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 1. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[1].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[2].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 1. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[2].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[2].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[3].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 1. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[3].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[3].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[3].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[4].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[7].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 1. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[8].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[10].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[11].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[13].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[16].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[4]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[17].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[17].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[17].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[18].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[18].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[18].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[19].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[19].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[20].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[20].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[20].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[21].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[21].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[22].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[22].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[23].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[3]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[24].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[24].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[24].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[25].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[25].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[26].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[26].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[27].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[2]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[28].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[28].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[29].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[1]' is connected to logic 0. 
+Warning: In design 'dec_is_column', a pin on submodule 'genblk1[30].comparator' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'B[0]' is connected to logic 0. 
+Warning: In design 'decoder_DATA_WIDTH32', the same net is connected to more than one pin on submodule 'comp_to_zero'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[5]', 'B[4]'', 'B[3]', 'B[2]', 'B[1]', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[0].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[1].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[2].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[1]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[3].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[4].comparator'. (LINT-33)
+   Net 'n56' is connected to pins 'B[3]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[5].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[5].comparator'. (LINT-33)
+   Net 'n56' is connected to pins 'B[3]', 'B[2]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[8].comparator'. (LINT-33)
+   Net 'n85' is connected to pins 'B[5]', 'codeword_width[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[8].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[8].comparator'. (LINT-33)
+   Net 'n57' is connected to pins 'B[2]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[9].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[9].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[3]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[10].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[11].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[11].comparator'. (LINT-33)
+   Net 'n57' is connected to pins 'B[3]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[12].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[2]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[12].comparator'. (LINT-33)
+   Net 'n89' is connected to pins 'B[1]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[13].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[13].comparator'. (LINT-33)
+   Net 'n57' is connected to pins 'B[3]', 'B[2]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[14].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[14].comparator'. (LINT-33)
+   Net 'n57' is connected to pins 'B[3]', 'B[2]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[15].comparator'. (LINT-33)
+   Net 'n55' is connected to pins 'B[4]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[15].comparator'. (LINT-33)
+   Net 'n57' is connected to pins 'B[3]', 'B[2]'', 'B[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[16].comparator'. (LINT-33)
+   Net 'n89' is connected to pins 'B[3]', 'B[2]'', 'B[1]', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[17].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[2]'', 'B[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[17].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[0]', 'codeword_width[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[18].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[4]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[18].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[2]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[19].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'codeword_width[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[19].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[2]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[19].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[1]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[20].comparator'. (LINT-33)
+   Net 'n85' is connected to pins 'B[4]', 'codeword_width[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[20].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[21].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[21].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[2]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[22].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[3]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[22].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[2]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[23].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[2]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[24].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[25].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[3]', 'B[0]'', 'codeword_width[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[25].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[26].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[3]', 'B[1]'', 'codeword_width[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[26].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[2]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[27].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[4]'', 'codeword_width[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[27].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[3]', 'B[1]'', 'B[0]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[28].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[2]', 'codeword_width[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[28].comparator'. (LINT-33)
+   Net '*Logic0*' is connected to pins 'B[1]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[29].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[4]'', 'codeword_width[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[29].comparator'. (LINT-33)
+   Net 'n89' is connected to pins 'B[2]', 'B[0]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[30].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[4]'', 'B[3]', 'codeword_width[1]'.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[30].comparator'. (LINT-33)
+   Net 'n88' is connected to pins 'B[2]', 'B[1]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[31].comparator'. (LINT-33)
+   Net 'n87' is connected to pins 'B[5]', 'B[4]''.
+Warning: In design 'dec_is_column', the same net is connected to more than one pin on submodule 'genblk1[31].comparator'. (LINT-33)
+   Net 'n89' is connected to pins 'B[2]', 'B[1]'', 'B[0]'.
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[31]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[30]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[29]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[28]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[27]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'decoder_DATA_WIDTH32', output port 'data_out[26]' is connected directly to 'logic 0'. (LINT-52)
+Warning: Net 'u_decoder/whatColisS[0]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'u_decoder/whatColisS[1]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'u_decoder/whatColisS[2]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'u_decoder/whatColisS[3]' has a single tri-state driver.  (LINT-63)
+Warning: Net 'u_decoder/is_col/encoder/n101' has a single tri-state driver.  (LINT-63)
+1
